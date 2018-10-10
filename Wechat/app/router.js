@@ -8,19 +8,19 @@ import {
   Platform,
   Linking,
   DeviceEventEmitter,
-  AsyncStorage,
+  AsyncStorage
 } from 'react-native'
 import {
   StackNavigator,
   TabNavigator,
   TabBarBottom,
   addNavigationHelpers,
-  NavigationActions,
+  NavigationActions
 } from 'react-navigation'
 import {
   initializeListeners,
   createReduxBoundAddListener,
-  createReactNavigationReduxMiddleware,
+  createReactNavigationReduxMiddleware
 } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import DeviceInfo from 'react-native-device-info'
@@ -45,6 +45,8 @@ import FriendScreen from './containers/mine/FriendScreen'
 import SettingScreen from './containers/mine/SettingScreen'
 import UserInformationizeScreen from './containers/mine/UserInformationizeScreen'
 
+import MomentScreen from './containers/find/MomentScreen'
+
 //状态栏颜色导航栏样式
 StatusBar.setBarStyle('light-content')
 StatusBar.setHidden(false)
@@ -57,7 +59,11 @@ const MineNavigator = {
   CreditScreen: { screen: CreditScreen },
   FriendScreen: { screen: FriendScreen },
   SettingScreen: { screen: SettingScreen },
-  UserInformationizeScreen: { screen: UserInformationizeScreen },
+  UserInformationizeScreen: { screen: UserInformationizeScreen }
+}
+
+const FindNavigator = {
+  MomentScreen: { screen: MomentScreen }
 }
 
 const HomeNavigator = TabNavigator(
@@ -65,7 +71,7 @@ const HomeNavigator = TabNavigator(
     Party: { screen: Party },
     Application: { screen: Application },
     Find: { screen: Find },
-    Mine: { screen: Mine },
+    Mine: { screen: Mine }
   },
   {
     tabBarComponent: TabBarBottom,
@@ -75,8 +81,8 @@ const HomeNavigator = TabNavigator(
     lazyLoad: false,
     tabBarOptions: {
       activeTintColor: '#38649F',
-      inactiveTintColor: '#C7C5CD',
-    },
+      inactiveTintColor: '#C7C5CD'
+    }
   }
 )
 
@@ -84,6 +90,8 @@ const MainNavigator = StackNavigator(
   {
     HomeNavigator: { screen: HomeNavigator },
     ...MineNavigator,
+
+    ...FindNavigator
   },
   {
     navigationOptions: {
@@ -99,35 +107,35 @@ const MainNavigator = StackNavigator(
             height:
               DeviceInfo.getSystemVersion() >= '5.0.0'
                 ? 56 + StatusBar.currentHeight
-                : 56,
-          },
-        }),
+                : 56
+          }
+        })
         //   height: 60 + StatusBar.currentHeight,
       },
       headerTruncatedBackTitle: '返回',
-      headerPressColorAndroid: 'rgba(0,0,0,0.2)',
+      headerPressColorAndroid: 'rgba(0,0,0,0.2)'
     },
     // headerMode: 'float'
-    headerMode: Platform.OS === 'ios' ? 'screen' : 'float',
+    headerMode: Platform.OS === 'ios' ? 'screen' : 'float'
   }
 )
 
 const AppNavigator = StackNavigator(
   {
     Main: { screen: MainNavigator },
-    Login: { screen: Login },
+    Login: { screen: Login }
   },
   {
     headerMode: 'none',
     mode: 'modal',
     navigationOptions: {
-      gesturesEnabled: false,
+      gesturesEnabled: false
     },
     transitionConfig: () => ({
       transitionSpec: {
         duration: 300,
         easing: Easing.out(Easing.poly(4)),
-        timing: Animated.timing,
+        timing: Animated.timing
       },
       screenInterpolator: sceneProps => {
         const { layout, position, scene } = sceneProps
@@ -136,17 +144,17 @@ const AppNavigator = StackNavigator(
         const height = layout.initHeight
         const translateY = position.interpolate({
           inputRange: [index - 1, index, index + 1],
-          outputRange: [height, 0, 0],
+          outputRange: [height, 0, 0]
         })
 
         const opacity = position.interpolate({
           inputRange: [index - 1, index - 0.99, index],
-          outputRange: [0, 1, 1],
+          outputRange: [0, 1, 1]
         })
 
         return { opacity, transform: [{ translateY }] }
-      },
-    }),
+      }
+    })
   }
 )
 
@@ -222,7 +230,7 @@ class Router extends PureComponent {
     const navigation = addNavigationHelpers({
       dispatch,
       state: router,
-      addListener,
+      addListener
     })
     return <AppNavigator navigation={navigation} />
   }
@@ -235,7 +243,7 @@ export function routerReducer(state, action = {}) {
 Router = codePush(
   {
     checkFrequency: codePush.CheckFrequency.ON_APP_RESUME,
-    installMode: codePush.InstallMode.ON_NEXT_RESUME,
+    installMode: codePush.InstallMode.ON_NEXT_RESUME
     // updateDialog: {
     //   appendReleaseDescription: true,
 
