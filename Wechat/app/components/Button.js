@@ -18,12 +18,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderColor: '#037aff',
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: StyleSheet.hairlineWidth
   },
   text: {
     fontSize: 16,
-    color: '#037aff',
-  },
+    color: '#037aff'
+  }
 })
 
 export default Button

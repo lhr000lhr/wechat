@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { StyleSheet, View, FlatList, RefreshControl, Text } from 'react-native'
 import { connect } from 'react-redux'
 
+import MomentItem from './MomentItem'
+
 @connect(({ moment }) => ({ ...moment }))
 class MomentScreen extends Component {
   static navigationOptions = {
@@ -28,7 +30,7 @@ class MomentScreen extends Component {
               onRefresh={this._requestData}
             />
           }
-          renderItem={({ item, index }) => <Text>{JSON.stringify(item)}</Text>}
+          renderItem={({ item, index }) => <MomentItem {...item} />}
         />
       </View>
     )

@@ -142,6 +142,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-vector-icons')
     compile project(':react-native-device-info')
     compile project(':react-native-code-push')
     compile project(':react-native-splash-screen')

@@ -12,7 +12,7 @@
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-#import "SplashScreen.h"
+#import "RNSplashScreen.h"
 
 @implementation AppDelegate
 
