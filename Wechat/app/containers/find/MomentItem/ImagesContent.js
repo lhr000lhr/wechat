@@ -1,13 +1,16 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
 import { WingBlank, WhiteSpace } from 'antd-mobile-rn'
 import _ from 'lodash'
+
+const { height, width } = Dimensions.get('window')
+
+const picWidth = (width - 80) / 3
 
 import Touchable from '../../../components/Touchable'
 
 const images = [
   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-
   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
@@ -18,7 +21,7 @@ const images = [
 
 export const ImagesContent = props => {
   return (
-    <Touchable {...props}>
+    <View {...props}>
       {/* <Image
         style={{ width: 75, height: 75 }}
         source={{
@@ -28,19 +31,22 @@ export const ImagesContent = props => {
       <View style={styles.containerStyle}>
         {_.map(images, (image, index) => {
           return (
-            <View style={{ marginRight: 8 }}>
-              <Image
-                style={{ width: 75, height: 75 }}
-                source={{
-                  uri: image
-                }}
-              />
-              <WhiteSpace />
+            <View style={{ marginRight: 4 }}>
+              <Touchable>
+                <Image
+                  style={{ width: picWidth, height: picWidth }}
+                  source={{
+                    uri: image
+                  }}
+                />
+              </Touchable>
+
+              <WhiteSpace size="xs" />
             </View>
           )
         })}
       </View>
-    </Touchable>
+    </View>
   )
 }
 
@@ -49,7 +55,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
-    maxWidth: 85 * 3
+    maxWidth: picWidth * 4
   },
 
   avatarStyle: {
