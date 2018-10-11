@@ -61,7 +61,7 @@ export default class CommentWidget extends React.Component {
             <WingBlank size="sm">
               <Animatable.View
                 animation="slideInRight"
-                duration={200}
+                duration={150}
                 style={{
                   borderRadius: 4,
                   overflow: 'hidden',
@@ -95,8 +95,9 @@ export default class CommentWidget extends React.Component {
             style={{
               overflow: 'hidden',
               backgroundColor: 'white',
-              height: '100%',
-              justifyContent: 'center'
+              height: 40,
+              justifyContent: 'center',
+              alignItems: 'flex-end'
             }}
           >
             <Icon
@@ -121,13 +122,11 @@ export default class CommentWidget extends React.Component {
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    height: 40,
+    height: 30,
 
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-
-    overflow: 'hidden'
+    justifyContent: 'flex-end'
   },
   childContainerStyle: {
     width: 90,

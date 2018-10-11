@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native'
 import { WingBlank, WhiteSpace } from 'antd-mobile-rn'
 import Moment from 'moment'
 
@@ -11,20 +11,22 @@ import ImagesModule from './ImagesModule'
 import CommentModule from './CommentModule'
 import CommentWidget from './CommentWidget'
 
-import { from } from 'rxjs/observable/from'
-
 export const MomentItem = props => {
   return (
     <View {...props}>
-      <View>
+      <View
+        style={{
+          backgroundColor: 'white',
+          overflow: 'hidden'
+        }}
+      >
         {/* 微信卡片 */}
         <WhiteSpace />
 
-        <WingBlank style={styles.containerStyle} size="sm">
+        <WingBlank style={styles.containerStyle} size="md">
           <View
             style={{
-              width: 50,
-              backgroundColor: 'red'
+              width: 50
             }}
           >
             {/* 左边头像 */}
@@ -37,38 +39,44 @@ export const MomentItem = props => {
             />
           </View>
 
-          <View style={{ flex: 1, backgroundColor: 'green' }}>
+          <View style={{ flex: 1, overflow: 'hidden' }}>
             {/* 右边内容 */}
 
-            <Text>
+            <Text style={styles.nickStyle}>
               {/* 用户名 */}
               1
             </Text>
+            <WhiteSpace />
             <Text>
               {/* 内容 */}
-              1a'a'a
+              这是第二页第一条
             </Text>
+            <WhiteSpace />
+
             <ImagesModule />
 
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
-                alignItems: 'center'
+                alignItems: 'center',
+                zIndex: 2
               }}
             >
               {/* 时间和评论区域按钮 */}
-              <Text>{formatDate('2018-10-11 10:22:49')}</Text>
+              <Text style={{ color: 'gray', fontSize: 12 }}>
+                {formatDate('2018-10-11 10:22:49')}
+              </Text>
 
               <CommentWidget />
             </View>
 
-            <CommentModule />
+            <CommentModule style={{ zIndex: 1 }} />
           </View>
           {/* <Text>{JSON.stringify(props)}</Text> */}
         </WingBlank>
         <WhiteSpace />
-        <Divider color="#ECECEC" />
+        <Divider color="#f2f2f2" />
       </View>
     </View>
   )
@@ -77,12 +85,18 @@ export const MomentItem = props => {
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: 'white'
   },
 
   avatarStyle: {
     width: 40,
-    height: 40
+    height: 40,
+    backgroundColor: '#f0f0f0'
+  },
+  nickStyle: {
+    color: '#516794',
+    fontWeight: 'bold'
   }
 })
 

@@ -54,24 +54,26 @@ export const CommentModule = props => {
 
 const CommentCell = ({ sender, content }) => {
   return (
-    <View style={commentCellstyles.containerStyle}>
-      <Text
-        style={commentCellstyles.senderNickname}
-        onPress={() => {
-          alert()
-        }}
-      >
-        {/* 用户昵称 */}
-        {sender.nick}
-      </Text>
+    <WingBlank size="md">
+      <View style={commentCellstyles.containerStyle}>
+        <Text
+          style={commentCellstyles.senderNickname}
+          onPress={() => {
+            alert()
+          }}
+        >
+          {/* 用户昵称 */}
+          {sender.nick}
+        </Text>
 
-      <Text style={commentCellstyles.comment}>
-        {/* 用户评论 */}
-        {`: ${content}`}
-      </Text>
+        <Text style={commentCellstyles.comment}>
+          {/* 用户评论 */}
+          {`: ${content}`}
+        </Text>
 
-      <WhiteSpace size="xs" />
-    </View>
+        <WhiteSpace size="xs" />
+      </View>
+    </WingBlank>
   )
 }
 
@@ -79,7 +81,9 @@ const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
 
-    backgroundColor: '#f3f3f5'
+    backgroundColor: '#f3f3f5',
+    paddingTop: 2,
+    paddingBottom: 2
   },
 
   avatarStyle: {

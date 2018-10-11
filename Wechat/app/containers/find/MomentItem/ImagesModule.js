@@ -1,12 +1,18 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image, Dimensions } from 'react-native'
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Dimensions,
+  TouchableHighlight
+} from 'react-native'
 import { WingBlank, WhiteSpace } from 'antd-mobile-rn'
 import _ from 'lodash'
 
 const { height, width } = Dimensions.get('window')
 
-const picWidth = (width - 80) / 3
-
+const picWidth = 80
 import Touchable from '../../../components/Touchable'
 
 const images = [
@@ -22,24 +28,22 @@ const images = [
 export const ImagesContent = props => {
   return (
     <View {...props}>
-      {/* <Image
-        style={{ width: 75, height: 75 }}
-        source={{
-          uri: 'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4'
-        }}
-      /> */}
       <View style={styles.containerStyle}>
         {_.map(images, (image, index) => {
           return (
             <View key={index} style={{ marginRight: 4 }}>
-              <Touchable>
+              <TouchableHighlight
+                onPress={() => {
+                  alert()
+                }}
+              >
                 <Image
                   style={{ width: picWidth, height: picWidth }}
                   source={{
                     uri: image
                   }}
                 />
-              </Touchable>
+              </TouchableHighlight>
 
               <WhiteSpace size="xs" />
             </View>
