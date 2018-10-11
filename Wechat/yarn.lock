@@ -4737,7 +4737,7 @@ minizlib@^1.1.0:
   dependencies:
     minimist "0.0.8"
 
-moment@^2.10.6:
+moment@^2.10.6, moment@^2.22.2:
   version "2.22.2"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"
 
@@ -5604,9 +5604,9 @@ react-native-scripts@^1.5.0:
     rimraf "^2.6.1"
     xdl "^50.0.0"
 
-react-native-splash-screen@^3.0.6:
-  version "3.1.1"
-  resolved "http://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-3.1.1.tgz#1a4e46c9fdce53ff52af2a2cb4181788c4e30b30"
+react-native-splash-screen@3.0.6:
+  version "3.0.6"
+  resolved "http://registry.npm.taobao.org/react-native-splash-screen/download/react-native-splash-screen-3.0.6.tgz#c0bbf2c8ae40a313c4c7044f55e569414ff68332"
 
 react-native-swipeout@^2.2.2:
   version "2.3.6"

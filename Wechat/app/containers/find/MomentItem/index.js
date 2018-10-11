@@ -6,7 +6,7 @@ import { Icon } from 'react-native-elements'
 import Touchable from '../../../components/Touchable'
 import Divider from '../../../components/widget/Divider'
 
-import ImagesContent from './ImagesContent'
+import ImagesModule from './ImagesModule'
 
 export const MomentItem = props => {
   return (
@@ -43,7 +43,7 @@ export const MomentItem = props => {
               {/* 内容 */}
               1a'a'a
             </Text>
-            <ImagesContent />
+            <ImagesModule />
 
             <View
               style={{
