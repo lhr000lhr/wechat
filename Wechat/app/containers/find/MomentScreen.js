@@ -6,10 +6,12 @@ import {
   RefreshControl,
   DeviceEventEmitter,
   ActivityIndicator,
-  Text
+  Text,
+  ScrollView
 } from 'react-native'
 import { connect } from 'react-redux'
 
+import HeaderItem from './HeaderItem'
 import MomentItem from './MomentItem'
 
 import RefreshState from '../../components/widget/RefreshState'
@@ -17,7 +19,7 @@ import RefreshState from '../../components/widget/RefreshState'
 @connect(({ moment }) => ({ ...moment }))
 class MomentScreen extends Component {
   static navigationOptions = {
-    title: '朋友圈'
+    header: null
   }
 
   componentDidMount() {
@@ -47,6 +49,9 @@ class MomentScreen extends Component {
             />
           }
           renderItem={({ item, index }) => <MomentItem key={index} {...item} />}
+          ListHeaderComponent={() => {
+            return <HeaderItem />
+          }}
         />
       </View>
     )
