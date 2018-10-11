@@ -24,7 +24,7 @@ export const MomentItem = props => {
     error
   } = props
   debugger
-  if (error === 'losted') {
+  if (error) {
     return <View />
   }
 
