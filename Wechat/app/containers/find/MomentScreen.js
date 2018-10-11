@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, FlatList, RefreshControl, Text } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  FlatList,
+  RefreshControl,
+  DeviceEventEmitter
+} from 'react-native'
 import { connect } from 'react-redux'
 
 import MomentItem from './MomentItem'
@@ -24,13 +30,20 @@ class MomentScreen extends Component {
         <FlatList
           data={data}
           contentContainerStyle={styles.liststyle}
+          onScroll={() => {
+            // this.props.dispatch({
+            //   type: 'commentWidget/hide'
+            // })
+
+            DeviceEventEmitter.emit('hideWidget')
+          }}
           refreshControl={
             <RefreshControl
               refreshing={this.props.refreshing}
               onRefresh={this._requestData}
             />
           }
-          renderItem={({ item, index }) => <MomentItem {...item} />}
+          renderItem={({ item, index }) => <MomentItem key={index} {...item} />}
         />
       </View>
     )

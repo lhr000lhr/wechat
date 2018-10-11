@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, Image, ScrollView } from 'react-native'
+import {
+  StyleSheet,
+  View,
+  Image,
+  ScrollView,
+  DeviceEventEmitter
+} from 'react-native'
 import { connect } from 'react-redux'
 
 import { List, Grid } from 'antd-mobile-rn'

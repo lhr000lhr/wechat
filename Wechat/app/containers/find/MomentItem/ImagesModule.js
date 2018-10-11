@@ -31,7 +31,7 @@ export const ImagesContent = props => {
       <View style={styles.containerStyle}>
         {_.map(images, (image, index) => {
           return (
-            <View style={{ marginRight: 4 }}>
+            <View key={index} style={{ marginRight: 4 }}>
               <Touchable>
                 <Image
                   style={{ width: picWidth, height: picWidth }}
