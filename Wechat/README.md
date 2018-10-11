@@ -20,15 +20,3 @@ Also there is another workaround for a missing feature https://github.com/react-
 ## LICENSE
 
 MIT
-
-## code-push iOS key
-
-### Production:3VOXPefDsuo6Sq4mYGBadi7GS_qCHJWDdZtYM
-
-### Staging: yiiyN9kelkd_UMhlXBrAHx00j3WBrkbvuZtYM
-
-## code-push Android key
-
-### Production:L3OAf5kNcmHU-BOXS4NhTQ8V0wjtBJRgKWtKM
-
-### Staging: XblF-uft6I4W2rCmZ62BKgD9h-1FH1WAgF-KtG
