@@ -22,3 +22,13 @@ export const setAccessToken = access_token => {
   axios.defaults.headers.common['Access-Token'] = access_token
   global.token = access_token
 }
+
+export function chunk(arr, size) {
+  let newArr = []
+  let i = 0
+  while (i < arr.length) {
+    newArr.push(arr.slice(i, i + size))
+    i = i + size
+  }
+  return newArr
+}

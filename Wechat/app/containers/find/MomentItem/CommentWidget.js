@@ -95,7 +95,7 @@ export default class CommentWidget extends React.Component {
             style={{
               overflow: 'hidden',
               backgroundColor: 'white',
-              // height: 40,
+              height: 40,
               justifyContent: 'center',
               alignItems: 'flex-end'
             }}

@@ -122,8 +122,8 @@ const MainNavigator = StackNavigator(
 
 const AppNavigator = StackNavigator(
   {
-    Main: { screen: MainNavigator },
-    Login: { screen: Login }
+    Login: { screen: Login },
+    Main: { screen: MainNavigator }
   },
   {
     headerMode: 'none',

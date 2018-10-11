@@ -20,10 +20,8 @@ const { height, width } = Dimensions.get('window')
 
 import { createAction, NavigationActions, Storage } from '../../../utils'
 
-@connect(({ commentWidget }) => ({
-  ...commentWidget
-}))
-export default class HeaderItem extends React.Component {
+@connect(({}) => ({}))
+export default class HeaderItem extends React.PureComponent {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,14 +32,14 @@ export default class HeaderItem extends React.Component {
 
   render() {
     const { props } = this
-
+    const { userInfo } = props
+    debugger
     return (
       <View style={styles.containerStyle}>
         <ImageBackground
           style={styles.backgroundImageStyle}
           source={{
-            uri:
-              'https://wx2.sinaimg.cn/mw690/bfc243a3gy1fw4d49qc1oj20hs0e8dm9.jpg'
+            uri: userInfo['profile-image']
           }}
         >
           <View
@@ -62,20 +60,20 @@ export default class HeaderItem extends React.Component {
         <View style={styles.userInfoStyle}>
           {/* 用户信息展示位置 */}
 
-          <Text style={styles.nikenameStyle}>名字</Text>
+          <Text style={styles.nikenameStyle}>{userInfo['nick']}</Text>
           <WingBlank>
             <View
               style={{
                 padding: 1,
                 borderColor: 'gray',
-                borderWidth: 0.5
+                borderWidth: 0.5,
+                backgroundColor: 'white'
               }}
             >
               <Image
                 style={styles.avatarImageStyle}
                 source={{
-                  uri:
-                    'https://wx2.sinaimg.cn/mw690/bfc243a3gy1fw4d49qc1oj20hs0e8dm9.jpg'
+                  uri: userInfo['avatar']
                 }}
               />
             </View>
@@ -93,6 +91,7 @@ const styles = StyleSheet.create({
   },
   backgroundImageStyle: {
     height: 300,
+    backgroundColor: 'gray',
     width: '100%'
   },
   userInfoStyle: {
@@ -104,6 +103,8 @@ const styles = StyleSheet.create({
     bottom: 20
   },
   avatarImageStyle: {
+    backgroundColor: 'gray',
+
     width: 70,
     height: 70
   },

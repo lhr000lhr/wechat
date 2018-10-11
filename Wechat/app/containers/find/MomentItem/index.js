@@ -12,6 +12,22 @@ import CommentModule from './CommentModule'
 import CommentWidget from './CommentWidget'
 
 export const MomentItem = props => {
+  const {
+    content,
+    images,
+    sender = {
+      avatar: '',
+      nick: '',
+      username: ''
+    },
+    comments,
+    error
+  } = props
+  debugger
+  if (error === 'losted') {
+    return <View />
+  }
+
   return (
     <View {...props}>
       <View
@@ -33,8 +49,7 @@ export const MomentItem = props => {
             <Image
               style={styles.avatarStyle}
               source={{
-                uri:
-                  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4'
+                uri: `${sender.avatar}`
               }}
             />
           </View>
@@ -44,23 +59,27 @@ export const MomentItem = props => {
 
             <Text style={styles.nickStyle}>
               {/* 用户名 */}
-              1
+              {sender.username}
             </Text>
             <WhiteSpace />
-            <Text>
-              {/* 内容 */}
-              这是第二页第一条
-            </Text>
-            <WhiteSpace />
+            {content && (
+              <View>
+                <Text>
+                  {/* 内容 */}
+                  {content}
+                </Text>
+                <WhiteSpace />
+              </View>
+            )}
 
-            <ImagesModule />
+            {images && <ImagesModule images={images} />}
 
             <View
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
-                zIndex: 2
+                zIndex: 999
               }}
             >
               {/* 时间和评论区域按钮 */}
@@ -70,8 +89,11 @@ export const MomentItem = props => {
 
               <CommentWidget />
             </View>
+            <WhiteSpace />
 
-            <CommentModule style={{ zIndex: 1 }} />
+            {comments && (
+              <CommentModule comments={comments} style={{ zIndex: 1 }} />
+            )}
           </View>
           {/* <Text>{JSON.stringify(props)}</Text> */}
         </WingBlank>

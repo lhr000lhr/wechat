@@ -9,28 +9,34 @@ const picWidth = (width - fixedEdge) / 3
 
 import Touchable from '../../../components/Touchable'
 
-const comments = [
-  {
-    content: 'Good.',
-    sender: {
-      username: 'outman',
-      nick: 'Super hero',
-      avatar:
-        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7'
-    }
-  },
-  {
-    content: 'Like it too',
-    sender: {
-      username: 'inman',
-      nick: 'Doggy Over',
-      avatar:
-        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7'
-    }
-  }
-]
+// const comments = [
+//   {
+//     content: 'Good.',
+//     sender: {
+//       username: 'outman',
+//       nick: 'Super hero',
+//       avatar:
+//         'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7'
+//     }
+//   },
+//   {
+//     content: 'Like it too',
+//     sender: {
+//       username: 'inman',
+//       nick: 'Doggy Over',
+//       avatar:
+//         'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7'
+//     }
+//   }
+// ]
 
 export const CommentModule = props => {
+  const { comments } = props
+
+  if (comments.length == 0) {
+    return <View />
+  }
+  debugger
   return (
     <View {...props}>
       {/* <Image
@@ -43,7 +49,7 @@ export const CommentModule = props => {
         <WhiteSpace size="xs" />
         <WingBlank size="sm">
           {_.map(comments, (comment, index) => {
-            return <CommentCell {...comment} />
+            return <CommentCell {...comment} key={index} />
           })}
         </WingBlank>
         <WhiteSpace size="xs" />

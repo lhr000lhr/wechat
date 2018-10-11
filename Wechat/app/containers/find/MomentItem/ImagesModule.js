@@ -15,17 +15,18 @@ const { height, width } = Dimensions.get('window')
 const picWidth = 80
 import Touchable from '../../../components/Touchable'
 
-const images = [
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4'
-]
+// const images = [
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
+//   'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4'
+// ]
 
 export const ImagesContent = props => {
+  const { images } = props
   return (
     <View {...props}>
       <View style={styles.containerStyle}>
@@ -44,7 +45,7 @@ export const ImagesContent = props => {
                     backgroundColor: '#f0f0f0'
                   }}
                   source={{
-                    uri: image
+                    uri: image['url']
                   }}
                 />
               </TouchableHighlight>

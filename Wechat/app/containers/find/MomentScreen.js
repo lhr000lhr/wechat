@@ -7,7 +7,9 @@ import {
   DeviceEventEmitter,
   ActivityIndicator,
   Text,
-  ScrollView
+  SafeAreaView,
+  Platform,
+  Animated
 } from 'react-native'
 import { connect } from 'react-redux'
 
@@ -15,11 +17,20 @@ import HeaderItem from './HeaderItem'
 import MomentItem from './MomentItem'
 
 import RefreshState from '../../components/widget/RefreshState'
+import MyNavBar from '../../components/MyNavBar'
 
-@connect(({ moment }) => ({ ...moment }))
+const AnimatedFlatList = Animated.createAnimatedComponent(FlatList)
+
+@connect(({ app, moment }) => ({ app, ...moment }))
 class MomentScreen extends Component {
   static navigationOptions = {
     header: null
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      scrollY: new Animated.Value(0)
+    }
   }
 
   componentDidMount() {
@@ -30,16 +41,36 @@ class MomentScreen extends Component {
   }
 
   render() {
-    const { data } = this.props
+    const { feedList } = this.props
+
+    // const topBarOpacity = this.state.scrollY / 3     0.0
+
+    const topBarOpacity = this.state.scrollY.interpolate({
+      inputRange: [0, 80, 160],
+      outputRange: [0, 0.5, 1],
+      extrapolate: 'clamp'
+    })
     return (
       <View style={styles.container}>
-        <FlatList
-          data={data}
+        <MyNavBar
+          {...this.props}
+          backgroundColor="#38649F"
+          topBarOpacity={topBarOpacity}
+        />
+        <AnimatedFlatList
+          data={feedList}
+          ref={flatList => {
+            _flatList = flatList
+          }}
           contentContainerStyle={styles.liststyle}
-          onScroll={() => {
+          onScroll={Animated.event(
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+            { useNativeDriver: true }
+          )}
+          onScrollBeginDrag={event => {
             DeviceEventEmitter.emit('hideWidget')
           }}
-          onEndReachedThreshold={0.2}
+          onEndReachedThreshold={0.4}
           onEndReached={this._onFooterRefresh}
           ListFooterComponent={this.renderFooter}
           refreshControl={
@@ -49,9 +80,8 @@ class MomentScreen extends Component {
             />
           }
           renderItem={({ item, index }) => <MomentItem key={index} {...item} />}
-          ListHeaderComponent={() => {
-            return <HeaderItem />
-          }}
+          ListHeaderComponent={<HeaderItem {...this.props.app} />}
+          keyExtractor={(item, i) => `${i}`}
         />
       </View>
     )
@@ -118,9 +148,13 @@ class MomentScreen extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'white'
   },
-  liststyle: {},
+
+  liststyle: {
+    backgroundColor: 'white'
+  },
   iconStyle: {}
 })
 
