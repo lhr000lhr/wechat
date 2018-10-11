@@ -22,7 +22,7 @@
 
   
     #ifdef DEBUG
-   [[RCTBundleURLProvider sharedSettings] setJsLocation:@"192.168.31.95"];
+   [[RCTBundleURLProvider sharedSettings] setJsLocation:@"localhost"];
   
  
         jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
