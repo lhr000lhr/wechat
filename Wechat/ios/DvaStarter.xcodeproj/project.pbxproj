@@ -345,6 +345,13 @@
 			remoteGlobalIDString = 3D7682761D8E76B80014119E;
 			remoteInfo = SplashScreen;
 		};
+		4BFF7B23216EFD0000D29D74 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F913A978D6E44A09A29054FA /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -432,6 +439,7 @@
 		E7E39FE825A34C25A99A66EC /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		EDBDBB96FD1646B8B0088FD2 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		F2B62ED96D454FB7A389C012 /* libRNVectorIcons-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNVectorIcons-tvOS.a"; sourceTree = "<group>"; };
+		F913A978D6E44A09A29054FA /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		FBC26A08CC9B472CAA3C5156 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -677,6 +685,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4BFF7AF6216EFD0000D29D74 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4BFF7B24216EFD0000D29D74 /* libSplashScreen.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5D7F21A8510949E8A16FDF94 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,6 +749,7 @@
 				116C5811FA5748CCAE3D8773 /* RNDeviceInfo.xcodeproj */,
 				04B971B09253433B8A793C12 /* RNVectorIcons.xcodeproj */,
 				B586861ABC3D4F55A2929AB4 /* SplashScreen.xcodeproj */,
+				F913A978D6E44A09A29054FA /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -960,6 +977,10 @@
 				{
 					ProductGroup = 4BB1EC77216E63B800B3532E /* Products */;
 					ProjectRef = 04B971B09253433B8A793C12 /* RNVectorIcons.xcodeproj */;
+				},
+				{
+					ProductGroup = 4BFF7AF6216EFD0000D29D74 /* Products */;
+					ProjectRef = F913A978D6E44A09A29054FA /* SplashScreen.xcodeproj */;
 				},
 				{
 					ProductGroup = 18D3BEA82061FA0200A824D2 /* Products */;
@@ -1254,6 +1275,13 @@
 			remoteRef = 4BFF7AE2216EEBB700D29D74 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		4BFF7B24216EFD0000D29D74 /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = 4BFF7B23216EFD0000D29D74 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1446,6 +1474,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = DvaStarterTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1480,6 +1509,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-code-pushiosCodePush/**",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = DvaStarterTests/Info.plist;
@@ -1526,6 +1556,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = DvaStarter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1563,6 +1594,7 @@
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = DvaStarter/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1597,6 +1629,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-code-pushiosCodePush/**",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "DvaStarter-tvOS/Info.plist";
@@ -1641,6 +1674,7 @@
 					"$(SRCROOT)..\node_modules\neact-native-code-pushiosCodePush/**",
 					"$(SRCROOT)/../node_modules/react-native-device-info/ios/RNDeviceInfo",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "DvaStarter-tvOS/Info.plist";

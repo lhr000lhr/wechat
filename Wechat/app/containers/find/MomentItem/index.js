@@ -1,16 +1,21 @@
 import React from 'react'
 import { StyleSheet, Text, View, Image } from 'react-native'
 import { WingBlank, WhiteSpace } from 'antd-mobile-rn'
-import { Icon } from 'react-native-elements'
+import Moment from 'moment'
 
+import { formatDate } from '../../../utils'
 import Touchable from '../../../components/Touchable'
 import Divider from '../../../components/widget/Divider'
 
 import ImagesModule from './ImagesModule'
+import CommentModule from './CommentModule'
+import CommentWidget from './CommentWidget'
+
+import { from } from 'rxjs/observable/from'
 
 export const MomentItem = props => {
   return (
-    <Touchable {...props}>
+    <View {...props}>
       <View>
         {/* 微信卡片 */}
         <WhiteSpace />
@@ -53,21 +58,19 @@ export const MomentItem = props => {
               }}
             >
               {/* 时间和评论区域按钮 */}
-              <Text>2018年10月11日00:35:37</Text>
-              <Icon
-                name="message-reply-text"
-                type="material-community"
-                color="#97aacf"
-                onPress={() => console.log('hello')}
-              />
+              <Text>{formatDate('2018-10-11 10:22:49')}</Text>
+
+              <CommentWidget />
             </View>
+
+            <CommentModule />
           </View>
           {/* <Text>{JSON.stringify(props)}</Text> */}
         </WingBlank>
         <WhiteSpace />
         <Divider color="#ECECEC" />
       </View>
-    </Touchable>
+    </View>
   )
 }
 

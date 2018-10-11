@@ -1,6 +1,16 @@
 import axios from 'axios'
 
 export { NavigationActions } from 'react-navigation'
+import Moment from 'moment'
+import 'moment/locale/zh-cn'
+
+Moment().locale('zh-cn')
+
+export const formatDate = time => {
+  return Moment(time)
+    .startOf('seconds')
+    .fromNow()
+}
 
 export { default as Storage } from './storage'
 

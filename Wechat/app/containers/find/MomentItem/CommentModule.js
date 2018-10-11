@@ -9,14 +9,25 @@ const picWidth = (width - fixedEdge) / 3
 
 import Touchable from '../../../components/Touchable'
 
-const images = [
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4',
-  'https://avatars1.githubusercontent.com/u/10321883?s=88&v=4'
+const comments = [
+  {
+    content: 'Good.',
+    sender: {
+      username: 'outman',
+      nick: 'Super hero',
+      avatar:
+        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7'
+    }
+  },
+  {
+    content: 'Like it too',
+    sender: {
+      username: 'inman',
+      nick: 'Doggy Over',
+      avatar:
+        'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTlJRALAf-76JPOLohBKzBg8Ab4Q5pWeQhF5igSfBflE_UYbqu7'
+    }
+  }
 ]
 
 export const CommentModule = props => {
@@ -29,23 +40,37 @@ export const CommentModule = props => {
         }}
       /> */}
       <View style={styles.containerStyle}>
-        {_.map(images, (image, index) => {
-          return (
-            <View style={{ marginRight: 4 }}>
-              <Touchable>
-                <Image
-                  style={{ width: picWidth, height: picWidth }}
-                  source={{
-                    uri: image
-                  }}
-                />
-              </Touchable>
-
-              <WhiteSpace size="xs" />
-            </View>
-          )
-        })}
+        <WhiteSpace size="xs" />
+        <WingBlank size="sm">
+          {_.map(comments, (comment, index) => {
+            return <CommentCell {...comment} />
+          })}
+        </WingBlank>
+        <WhiteSpace size="xs" />
       </View>
+    </View>
+  )
+}
+
+const CommentCell = ({ sender, content }) => {
+  return (
+    <View style={commentCellstyles.containerStyle}>
+      <Text
+        style={commentCellstyles.senderNickname}
+        onPress={() => {
+          alert()
+        }}
+      >
+        {/* 用户昵称 */}
+        {sender.nick}
+      </Text>
+
+      <Text style={commentCellstyles.comment}>
+        {/* 用户评论 */}
+        {`: ${content}`}
+      </Text>
+
+      <WhiteSpace size="xs" />
     </View>
   )
 }
@@ -53,14 +78,27 @@ export const CommentModule = props => {
 const styles = StyleSheet.create({
   containerStyle: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    maxWidth: picWidth * 4
+
+    backgroundColor: '#f3f3f5'
   },
 
   avatarStyle: {
     width: 40,
     height: 40
+  }
+})
+
+const commentCellstyles = StyleSheet.create({
+  containerStyle: {
+    flex: 1,
+    flexDirection: 'row'
+  },
+  senderNickname: {
+    color: '#516794',
+    fontWeight: 'bold'
+  },
+  comment: {
+    flex: 1
   }
 })
 
