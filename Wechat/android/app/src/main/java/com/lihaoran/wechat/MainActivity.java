@@ -1,4 +1,4 @@
-package com.tydic.building;
+package com.lihaoran.wechat;
 
 import android.os.Bundle;
 

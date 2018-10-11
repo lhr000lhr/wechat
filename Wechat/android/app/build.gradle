@@ -103,7 +103,7 @@ android {
     buildToolsVersion '27.0.3'
 
     defaultConfig {
-        applicationId "com.tydic.building"
+        applicationId "com.lihaoran.wechat"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
@@ -142,9 +142,9 @@ android {
 }
 
 dependencies {
-
     compile project(':react-native-vector-icons')
-    compile project(':react-native-device-info')
+    compile project(':react-native-splash-screen')
+
     compile project(':react-native-code-push')
     compile project(':react-native-device-info')
     compile fileTree(dir: "libs", include: ["*.jar"])
