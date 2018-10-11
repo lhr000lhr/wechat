@@ -4,11 +4,15 @@ import {
   View,
   FlatList,
   RefreshControl,
-  DeviceEventEmitter
+  DeviceEventEmitter,
+  ActivityIndicator,
+  Text
 } from 'react-native'
 import { connect } from 'react-redux'
 
 import MomentItem from './MomentItem'
+
+import RefreshState from '../../components/widget/RefreshState'
 
 @connect(({ moment }) => ({ ...moment }))
 class MomentScreen extends Component {
@@ -31,12 +35,11 @@ class MomentScreen extends Component {
           data={data}
           contentContainerStyle={styles.liststyle}
           onScroll={() => {
-            // this.props.dispatch({
-            //   type: 'commentWidget/hide'
-            // })
-
             DeviceEventEmitter.emit('hideWidget')
           }}
+          onEndReachedThreshold={0.2}
+          onEndReached={this._onFooterRefresh}
+          ListFooterComponent={this.renderFooter}
           refreshControl={
             <RefreshControl
               refreshing={this.props.refreshing}
@@ -54,6 +57,57 @@ class MomentScreen extends Component {
     this.props.dispatch({
       type: 'moment/allMoment'
     })
+  }
+
+  /**
+   * 加载更多
+   */
+  _onFooterRefresh = () => {
+    if (this.props.loading == RefreshState.Idle) {
+      this.props.dispatch({
+        type: 'moment/loadMore'
+      })
+    }
+  }
+
+  renderFooter = () => {
+    const { loading, refreshing } = this.props
+    // debugger
+    if (loading === RefreshState.Refreshing) {
+      return (
+        <ActivityIndicator
+          animating
+          size="small"
+          style={{
+            padding: 10
+          }}
+        />
+      )
+    } else if (loading === RefreshState.Idle) {
+      return (
+        <Text
+          style={{
+            padding: 10,
+            textAlign: 'center'
+          }}
+        >
+          {!refreshing ? '' : ''}
+        </Text>
+      )
+    } else if (loading == RefreshState.NoMoreData) {
+      return (
+        <Text
+          style={{
+            padding: 10,
+            textAlign: 'center'
+          }}
+        >
+          {this.props.data && this.props.data.length > 5 && '没有更多数据'}
+        </Text>
+      )
+    }
+
+    return null
   }
 }
 

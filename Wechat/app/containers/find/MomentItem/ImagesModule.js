@@ -38,7 +38,11 @@ export const ImagesContent = props => {
                 }}
               >
                 <Image
-                  style={{ width: picWidth, height: picWidth }}
+                  style={{
+                    width: picWidth,
+                    height: picWidth,
+                    backgroundColor: '#f0f0f0'
+                  }}
                   source={{
                     uri: image
                   }}

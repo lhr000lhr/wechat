@@ -1,4 +1,5 @@
 import { createAction, NavigationActions, Storage, delay } from '../utils'
+import RefreshState from '../components/widget/RefreshState'
 
 const fakeData = [
   {
@@ -302,8 +303,10 @@ const fakeData = [
 export default {
   namespace: 'moment',
   state: {
+    loading: RefreshState.Idle,
     refreshing: false,
-    data: []
+    data: [],
+    page: 1
   },
   reducers: {
     updateState(state, { payload }) {
@@ -322,25 +325,66 @@ export default {
         ...payload,
         refreshing: false
       }
+    },
+    loadingStart(state, { payload }) {
+      return { ...state, ...payload, loading: RefreshState.Refreshing }
+    },
+    loadingEnd(state, { payload }) {
+      return { ...state, ...payload, loading: RefreshState.Idle }
+    },
+    loadingNoMoreData(state, { payload }) {
+      return { ...state, ...payload, loading: RefreshState.NoMoreData }
+    },
+
+    appdendMoreData(state, { newData }) {
+      const oringalData = state.data
+      const combinedData = [...oringalData, ...newData]
+
+      return { ...state, ...combinedData }
+    },
+
+    changeData(state, { payload }) {
+      return { ...state, ...payload }
     }
   },
   effects: {
     //获取所有频道
     *allMoment({ payload }, { call, put, select }) {
-      //   try {
-      yield put(createAction('refreshingStart')({}))
+      try {
+        yield put(createAction('refreshingStart')({}))
+
+        yield call(delay, 500)
+
+        const data = fakeData
+        yield put(createAction('updateState')({ data: data }))
+
+        yield put(createAction('refreshingEnd')({}))
+      } catch (error) {
+        // console.log(data)
+      }
+    },
+
+    //加载更多
+    *loadMore({ payload }, { call, put, select }) {
+      // try {
+      yield put(createAction('loadingStart')({}))
+
+      const { moment } = yield select(state => state)
+
+      const { page, data, refreshing, loading } = moment
 
       yield call(delay, 500)
 
-      const data = fakeData
-      yield put(createAction('updateState')({ data: data }))
+      yield put(
+        createAction('updateState')({
+          data: [...data, ...data]
+        })
+      )
 
-      yield put(createAction('refreshingEnd')({}))
-      //   } catch (error) {
-
-      console.log(data)
-
-      //   }
+      yield put(createAction('loadingNoMoreData')({}))
+      // } catch (error) {
+      //   console.log(data)
+      // }
     }
   }
 }
