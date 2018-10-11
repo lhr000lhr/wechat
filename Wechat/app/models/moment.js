@@ -10,9 +10,19 @@ import {
 import RefreshState from '../components/widget/RefreshState'
 import * as service from '../services/auth'
 
+const initialState = {
+  loading: RefreshState.Idle,
+  refreshing: false,
+  data: [],
+  feedList: [],
+  page: 0,
+  collections: {}
+}
+
 export default {
   namespace: 'moment',
   state: {
+    ...initialState,
     loading: RefreshState.Idle,
     refreshing: false,
     data: [],
@@ -63,20 +73,26 @@ export default {
     //获取所有频道
     *allMoment({ payload }, { call, put, select }) {
       try {
-        yield put(createAction('refreshingStart')({}))
-
         const { moment } = yield select(state => state)
-        const { page } = moment
+        const { collections, feedList } = moment
+        let page = 0
+        yield put(
+          createAction('refreshingStart')({
+            feedList: feedList,
+            page
+          })
+        )
 
         const data = yield call(service.getLatestTweets, payload)
 
-        const collections = chunk(data, 5)
+        const newCollections = chunk(data, 5)
 
         yield put(
           createAction('updateState')({
-            collections,
+            ...initialState,
+            collections: newCollections,
             data: data,
-            feedList: collections[page]
+            feedList: newCollections[page]
           })
         )
 
