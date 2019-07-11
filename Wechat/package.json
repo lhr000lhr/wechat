@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "antd-mobile-rn": "^2.2.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "dva-core": "^1.1.0",
     "lodash": "^4.17.5",
     "moment": "^2.22.2",
