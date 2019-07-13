@@ -20,7 +20,6 @@ const { height, width } = Dimensions.get('window')
 
 import { createAction, NavigationActions, Storage } from '../../../utils'
 
-@connect(({}) => ({}))
 export default class HeaderItem extends React.PureComponent {
   constructor(props) {
     super(props)
