@@ -5,7 +5,8 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "format": "yarn prettier && yarn lint -- --fix"
+    "format": "yarn prettier && yarn lint -- --fix",
+    "postinstall": "cd node_modules/react-native ; ./scripts/ios-install-third-party.sh ; cd ../../;cd node_modules/react-native/third-party/glog-0.3.4/ ; sh ../../scripts/ios-configure-glog.sh ; cd ../../../../"
   },
   "dependencies": {
     "antd-mobile-rn": "^2.2.0",
